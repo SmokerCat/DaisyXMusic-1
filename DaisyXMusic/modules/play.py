@@ -404,7 +404,7 @@ async def m_cb(b, cb):
 async def play(_, message: Message):
     global que
     global useer
-    lel = await message.reply("🔄 **Processing**")
+    lel = await message.reply("```🔄 Preparing to Start```")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -461,7 +461,7 @@ async def play(_, message: Message):
     message.from_user.id
     message.from_user.first_name
     text_links=None
-    await lel.edit("🔎 **Finding**")
+    await lel.edit("```🔎 Searching....```")
     message.from_user.id
     if message.reply_to_message:
         entities = []
@@ -516,7 +516,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("```🎵 Preparing....```")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -560,7 +560,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("```Preparing to play...```")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
           results = YoutubeSearch(query, max_results=5).to_dict()
@@ -629,7 +629,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ **Playing** here the song requested by {} via Youtube Music 😜".format(
+            caption="▶️ ```Playing...``` here the song requested by {} via Aami Song Bot 😜".format(
                 message.from_user.mention()
             ),
         )

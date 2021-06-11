@@ -199,7 +199,7 @@ async def ee(client, message):
 @authorized_users_only
 async def settings(client, message):
     if message.chat.id in DISABLED_GROUPS:
-        await message.reply("```Music Player is Disabled```")
+        await message.reply("Music Player is Disabled")
         return    
     playing = None
     chat_id = get_chat_id(message.chat)
@@ -245,7 +245,7 @@ async def hfmm(_, message):
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await message.reply("```Processing...```")
+        lel = await message.reply("`Processing...`")
         
         if message.chat.id in DISABLED_GROUPS:
             await lel.edit("Music Player Already turned off In This Chat")
@@ -439,7 +439,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("```🔄Preparing to Play```")
+    lel = await message.reply("🔄 **Processing**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -494,7 +494,7 @@ async def play(_, message: Message):
         )
         return
     text_links=None
-    await lel.edit("```🔎Searching...```")
+    await lel.edit("🔎 **Finding**")
     if message.reply_to_message:
         entities = []
         toxt = message.reply_to_message.text or message.reply_to_message.caption
@@ -547,7 +547,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("```🎶Starting Song```")
+        await lel.edit("🎵 **Processing**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -591,7 +591,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("```🎶Starting Song```")
+        await lel.edit("🎵 **Processing**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
           results = YoutubeSearch(query, max_results=5).to_dict()
@@ -660,7 +660,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ ```Playing```here the song requested by {} via Aami song bot 😜".format(
+            caption="▶️ **Playing** here the song requested by {} via Youtube Music 😜".format(
                 message.from_user.mention()
             ),
         )
@@ -673,7 +673,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 ```Preparing to Play```")
+    lel = await message.reply("🔄 **Processing**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -727,7 +727,7 @@ async def ytplay(_, message: Message):
             f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
-    await lel.edit("🔎```Searching..```)
+    await lel.edit("🔎 **Finding**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -736,7 +736,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🎵 ```Starting to Play```")
+    await lel.edit("🎵 **Processing**")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()

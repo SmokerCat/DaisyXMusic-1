@@ -161,7 +161,7 @@ async def playlist(client, message):
 # ============================= Settings =========================================
 
 
-def updated_stats(chat, queue, vol=100):
+def updated_stats(chat, queue, vol=90):
     if chat.id in callsmusic.pytgcalls.active_calls:
         # if chat.id in active_chats:
         stats = "Settings of **{}**".format(chat.title)
@@ -567,7 +567,7 @@ async def play(_, message: Message):
         except:
           await lel.edit("Give me something to play")
         # Looks like hell. Aren't it?? FUCK OFF
-        toxxt = "**Select the song you want to play**\n\n"
+        toxxt = "```Select the song you want to play```\n\n"
         j = 0
         useer=user_name
         while j < 5:
@@ -580,13 +580,13 @@ async def play(_, message: Message):
         koyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("1️⃣", callback_data=f'plll 0|{query}'),
-                    InlineKeyboardButton("2️⃣", callback_data=f'plll 1|{query}'),
-                    InlineKeyboardButton("3️⃣", callback_data=f'plll 2|{query}'),
+                    InlineKeyboardButton("1", callback_data=f'plll 0|{query}'),
+                    InlineKeyboardButton("2", callback_data=f'plll 1|{query}'),
+                    InlineKeyboardButton("3", callback_data=f'plll 2|{query}'),
                 ],
                 [
-                    InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}'),
-                    InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}'),
+                    InlineKeyboardButton("4", callback_data=f'plll 3|{query}'),
+                    InlineKeyboardButton("5", callback_data=f'plll 4|{query}'),
                 ],
                 [InlineKeyboardButton(text="❌", callback_data="cls")],
             ]
@@ -607,7 +607,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song **queued** at position {position}!",
+            caption=f"#⃣ Your requested song ```queued``` at position {position}!",
             reply_markup=keyboard,
         )
         os.remove("final.png")

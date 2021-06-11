@@ -88,11 +88,10 @@ def song(client, message):
             parse_mode="md",
             title=title,
             duration=dur,
-            source=yt,
         )
         m.delete()
     except Exception as e:
-        m.edit("```❌ Error```")
+        m.edit("```❌ Something went Error```")
         print(e)
 
     try:
